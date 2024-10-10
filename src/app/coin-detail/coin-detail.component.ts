@@ -67,14 +67,16 @@ export class CoinDetailComponent implements OnInit {
       .subscribe(val=>{
         this.currency = val;
         this.getGraphData();
+        this.getCoinData();
       })
   }
 
   getCoinData(){
     this.api.getCurrencyById(this.coinId)
     .subscribe(res => {
-      
+      this.coinData = res;
       console.log(this.coinData);
+
       if(this.currency === 'USD'){
         res.market_data.current_price.myr = res.market_data.current_price.usd;
         res.market_data.market_cap.myr = res.market_data.market_cap.usd;
@@ -82,9 +84,6 @@ export class CoinDetailComponent implements OnInit {
         res.market_data.current_price.myr = res.market_data.current_price.jpy;
         res.market_data.market_cap.myr = res.market_data.market_cap.jpy;
       }
-      res.market_data.current_price.myr = res.market_data.current_price.jpy;
-      res.market_data.market_cap.myr = res.market_data.market_cap.jpy;
-      this.coinData = res;
     })
   }
 
