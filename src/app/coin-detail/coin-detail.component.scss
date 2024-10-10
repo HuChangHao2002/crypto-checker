@@ -28,10 +28,24 @@
 }
 
 #chart-container {
-  height: 400px; /* Increased height for the chart */
+  height: 600px;
   width: 100%;
 }
 
 .card {
   margin-bottom: 20px;
+  background-color: #212529;
+  border-radius: 10px;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
