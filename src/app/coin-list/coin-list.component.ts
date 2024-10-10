@@ -8,6 +8,7 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-coin-list',
@@ -36,7 +37,7 @@ export class CoinListComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private api : ApiService){ }
+  constructor(private api : ApiService , private router: Router){ }
 
   ngOnInit(): void {
       this.getAllData();
@@ -68,5 +69,9 @@ export class CoinListComponent implements OnInit{
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  gotoDetails(row:any) {
+    this.router.navigate(['coin-detail',row.id])
   }
 }
