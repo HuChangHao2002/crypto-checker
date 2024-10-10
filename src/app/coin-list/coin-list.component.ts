@@ -1,13 +1,25 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , OnInit , AfterViewInit , ViewChild} from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { CommonModule } from '@angular/common';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatSort, MatSortModule} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-coin-list',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    MatTableModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatTableModule, 
+    MatSortModule, 
+    MatPaginatorModule
   ],
   templateUrl: './coin-list.component.html',
   styleUrl: './coin-list.component.scss',
@@ -16,9 +28,15 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
   ],
 })
 export class CoinListComponent implements OnInit{
-  constructor(private api : ApiService){ }
+  
 
   bannerData : any=[];
+  dataSource!: MatTableDataSource<any>;
+  displayedColumns: string[] = ['symbol', 'current_price', 'price_change_percentage_24h', 'market_cap'];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private api : ApiService){ }
 
   ngOnInit(): void {
       this.getAllData();
@@ -37,6 +55,18 @@ export class CoinListComponent implements OnInit{
     this.api.getCurrency("MYR")
     .subscribe(res=>{
       console.log(res);
+      this.dataSource = new MatTableDataSource(res);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }

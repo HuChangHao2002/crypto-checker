@@ -11,13 +11,65 @@
 .card {
   transition: transform 0.2s; 
   background: transparent;
-  border:none;
+  border: none;
 }
 
 .card:hover {
   transform: scale(1.05); 
 }
 
-.img-fluid{
+.img-fluid {
   margin-left: 22px;
+}
+
+.mat-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mat-card-header {
+  background-color: #f8f9fa;
+  color: white;
+}
+
+.mat-card-footer {
+  background-color: #f1f1f1;
+}
+
+th.mat-header-cell {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+td.mat-cell {
+  color: #212529;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.mat-header-cell {
+  color: #ffffff; 
+}
+
+::ng-deep .mat-sort-header-content {
+  color: white;
+}
+
+.mat-card-content {
+  margin-bottom: 20px; 
+}
+
+.spacer{
+  height: 20px;
 }
