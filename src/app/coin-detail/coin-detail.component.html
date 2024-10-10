@@ -1,14 +1,30 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3 details">
-      <div class="img">
-        <img [src]="coinData?.image?.large" alt="">
-        <h3 class="text-center" style="font-size: 23px;" >{{coinData?.name}}</h3>
-        <h2 [innerHTML]="coinData?.description?.en.split('. ')[0]" ></h2>
-        <div class="more-detail">
-          <span class="title">Rank:</span> <span class="value">{{coinData?.market_cap_rank}}</span><br>
-          <span class="title">Current Price:</span> <span class="value">{{coinData?.market_data.current_price.myr | currency}}</span><br>
-          <span class="title">Market Cap:</span> <span class="value">{{coinData?.market_data.market_cap.myr | currency}}</span><br>
+    <!-- Bitcoin Details Section -->
+    <div class="col-md-4 details">
+      <div class="card shadow-lg p-3 mb-5 bg-dark text-white rounded">
+        <div class="card-body">
+          <div class="img text-center mb-4">
+            <img [src]="coinData?.image?.large" alt="{{coinData?.name}}" class="img-fluid rounded-circle" style="width: 100px;">
+            <h3 class="text-center mt-3">{{coinData?.name}}</h3>
+          </div>
+          <h5 class="mb-3">{{coinData?.description?.en.split('. ')[0]}}</h5>
+          <div class="more-detail">
+            <p><span class="title">Rank:</span> <span class="value">{{coinData?.market_cap_rank}}</span></p>
+            <p><span class="title">Current Price:</span> <span class="value">{{coinData?.market_data.current_price.myr | currency}}</span></p>
+            <p><span class="title">Market Cap:</span> <span class="value">{{coinData?.market_data.market_cap.myr | currency}}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side: Chart Section -->
+    <div class="col-md-8">
+      <div class="card shadow-lg p-3 mb-5 bg-dark text-white rounded">
+        <div class="card-body">
+          <h4 class="text-center">Market Trend Chart</h4>
+          <!-- Chart will be added here -->
+          <div id="chart-container"></div>
         </div>
       </div>
     </div>

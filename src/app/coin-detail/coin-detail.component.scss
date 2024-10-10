@@ -1,3 +1,37 @@
-*{
-  color:white;
+.details .card {
+  background-color: #343a40;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+}
+
+.img img {
+  border: 3px solid #ffffff;
+  padding: 5px;
+}
+
+.more-detail .title {
+  font-weight: bold;
+  color: #adb5bd;
+}
+
+.more-detail .value {
+  color: #ffffff;
+}
+
+.card h3, h5 {
+  color: #ffffff;
+}
+
+.card h4 {
+  color: #f8f9fa;
+}
+
+#chart-container {
+  height: 400px; /* Increased height for the chart */
+  width: 100%;
+}
+
+.card {
+  margin-bottom: 20px;
 }
