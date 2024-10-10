@@ -1,0 +1,31 @@
+<div class="banner bg-dark text-white py-3">
+  <div class="container">
+    <div class="header text-center mb-3">
+      <h2 class="display-4">Crypto Checker</h2>
+      <h6>Check all the latest cryptocurrency updates</h6>
+    </div>
+    <div class="sub-header">
+      <marquee behavior="scroll" direction="left" onmouseover="this.stop()"
+      onmouseout="this.start()" loop="infinite" class="text-light">
+        <div class="d-flex align-items-center">
+          <ng-container *ngFor="let row of bannerData">
+            <div class="mx-3">
+              <div class="card text-light" style="width: 150px;">
+                <img [src]="row.image" width="100" class="img-fluid" alt="Crypto Image">
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{row.symbol | uppercase}}</h5>
+                  <span class="text-danger">{{row.market_cap_change_percentage_24h}}%</span>
+                  <p class="card-text">{{row.current_price | currency:"MYR"}}</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </marquee>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!--Table-->
+</div>

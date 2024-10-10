@@ -1,0 +1,23 @@
+.banner {
+  background-image: url('../../../public/assets/banner.jpg');
+  height: 400px;
+  width: 100%;
+}
+
+.marquee {
+  padding: 10px 0; 
+}
+
+.card {
+  transition: transform 0.2s; 
+  background: transparent;
+  border:none;
+}
+
+.card:hover {
+  transform: scale(1.05); 
+}
+
+.img-fluid{
+  margin-left: 22px;
+}
