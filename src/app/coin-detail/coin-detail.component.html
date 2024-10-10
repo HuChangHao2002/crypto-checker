@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <!-- Right side: Chart Section -->
+    <!-- Chart Section -->
     <div class="col-md-8">
       <div class="card shadow-lg p-3 mb-5 bg-dark text-white rounded">
         <div class="card-body">
@@ -29,6 +29,12 @@
               [options]="lineChartOptions" 
               [type]="lineChartType">
             </canvas>
+            <div class="d-flex justify-content-around time-range-buttons">
+              <button (click)="getGraphData(1)" class="btn btn-custom">24 hours</button>
+              <button (click)="getGraphData(30)" class="btn btn-custom">30 days</button>
+              <button (click)="getGraphData(90)" class="btn btn-custom">90 days</button>
+              <button (click)="getGraphData(365)" class="btn btn-custom">1 year</button>
+            </div>
           </div>
         </div>
       </div>

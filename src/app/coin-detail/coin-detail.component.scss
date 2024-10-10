@@ -49,3 +49,31 @@
 .shadow-lg {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+
+.time-range-buttons {
+  margin-top: 20px;
+}
+
+.btn-custom {
+  background-color: #17a2b8;
+  color: #fff;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #138496;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-custom:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(23, 162, 184, 0.5);
+}
+
+.d-flex.justify-content-around {
+  gap: 10px;
+}

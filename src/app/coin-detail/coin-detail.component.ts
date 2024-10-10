@@ -62,11 +62,11 @@ export class CoinDetailComponent implements OnInit {
         this.coinId = val['id'];
       })
       this.getCoinData();
-      this.getGraphData();
+      this.getGraphData(this.days);
       this.currencyService.getCurrency()
       .subscribe(val=>{
         this.currency = val;
-        this.getGraphData();
+        this.getGraphData(this.days);
         this.getCoinData();
       })
   }
@@ -87,12 +87,13 @@ export class CoinDetailComponent implements OnInit {
     })
   }
 
-  getGraphData(){
+  getGraphData(days:number){
+    this.days = days
     this.api.getGraphicalCurrencyData(this.coinId ,this.currency,30)
     .subscribe(res=>{
       setTimeout(()=>{
         this.myLineChart.chart?.update();
-      },200);
+      },400);
       this.lineChartData.datasets[0].data = res.prices.map((a:any)=>{
         return a[1];
       });
