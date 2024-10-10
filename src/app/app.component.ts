@@ -6,6 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CurrencyService } from './service/currency.service';
 
 @Component({
   selector: 'app-root',
@@ -25,9 +26,12 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   selectedCurrency :string = 'MYR';
 
-  constructor () {}
+  constructor (
+    private currencyService : CurrencyService
+  ) {}
 
   sendCurrency(event:string){
     console.log(event);
+    this.currencyService.setCurrency(event);
   }
 }

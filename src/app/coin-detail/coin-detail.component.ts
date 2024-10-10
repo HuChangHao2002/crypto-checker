@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ChartConfiguration , ChartType } from 'chart.js'
 import { BaseChartDirective } from 'ng2-charts'
+import { CurrencyService } from '../service/currency.service';
 
 @Component({
   selector: 'app-coin-detail',
@@ -52,7 +53,8 @@ export class CoinDetailComponent implements OnInit {
 
   constructor(
     private api : ApiService,
-    private activateRoute : ActivatedRoute
+    private activateRoute : ActivatedRoute,
+    private currencyService : CurrencyService
   ){}
 
   ngOnInit(): void {
@@ -61,18 +63,33 @@ export class CoinDetailComponent implements OnInit {
       })
       this.getCoinData();
       this.getGraphData();
+      this.currencyService.getCurrency()
+      .subscribe(val=>{
+        this.currency = val;
+        this.getGraphData();
+      })
   }
 
   getCoinData(){
     this.api.getCurrencyById(this.coinId)
     .subscribe(res => {
+      
+      console.log(this.coinData);
+      if(this.currency === 'USD'){
+        res.market_data.current_price.myr = res.market_data.current_price.usd;
+        res.market_data.market_cap.myr = res.market_data.market_cap.usd;
+      }else if(this.currency === 'JPY'){
+        res.market_data.current_price.myr = res.market_data.current_price.jpy;
+        res.market_data.market_cap.myr = res.market_data.market_cap.jpy;
+      }
+      res.market_data.current_price.myr = res.market_data.current_price.jpy;
+      res.market_data.market_cap.myr = res.market_data.market_cap.jpy;
       this.coinData = res;
-      console.log(this.coinData)
     })
   }
 
   getGraphData(){
-    this.api.getGraphicalCurrencyData(this.coinId ,"MYR",30)
+    this.api.getGraphicalCurrencyData(this.coinId ,this.currency,30)
     .subscribe(res=>{
       setTimeout(()=>{
         this.myLineChart.chart?.update();

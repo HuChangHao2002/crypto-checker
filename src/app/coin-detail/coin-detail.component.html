@@ -11,8 +11,8 @@
           <h5 class="mb-3">{{coinData?.description?.en.split('. ')[0]}}</h5>
           <div class="more-detail">
             <p><span class="title">Rank:</span> <span class="value">{{coinData?.market_cap_rank}}</span></p>
-            <p><span class="title">Current Price:</span> <span class="value">{{coinData?.market_data.current_price.myr | currency}}</span></p>
-            <p><span class="title">Market Cap:</span> <span class="value">{{coinData?.market_data.market_cap.myr | currency}}</span></p>
+            <p><span class="title">Current Price:</span> <span class="value">{{coinData?.market_data.current_price.myr | currency : currency}}</span></p>
+            <p><span class="title">Market Cap:</span> <span class="value">{{coinData?.market_data.market_cap.myr | currency : currency}}</span></p>
           </div>
         </div>
       </div>
